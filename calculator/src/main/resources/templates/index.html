@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+<div class="container">
+    <h1>Calculate your own credit</h1>
+    <p th:text="'Write information below: '"/>
+    <form action="#" th:action="@{/index}" th:object="${count}" method="post">
+        <input type="number" th:field="*{sumCr}" placeholder="Sum" minlength="5" maxlength="20" required>
+        <p th:if="${#fields.hasErrors('sumCr')}" th:errors="*{sumCr}"></p>
+        <input type="number" th:field="*{timeCr}" placeholder="months" minlength="1" maxlength="12" required>
+        <p th:if="${#fields.hasErrors('timeCr')}" th:errors="*{timeCr}"></p>
+        <input type="number" th:field="*{rateCr}" placeholder="percent" minlength="1" maxlength="50" required>
+        <p th:if="${#fields.hasErrors('rateCr')}" th:errors="*{rateCr}"></p>
+        <input type="submit" value="Submit"/>
+    </form>
+</div>
+</body>
+</html>

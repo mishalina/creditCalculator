@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>result</title>
+</head>
+<body>
+<h1>Result</h1>
+<table border="1" th:object="${count}" th:action="@{/submit}" method="post">
+    <tr><p th:text="'Ежемесячный платеж составит: ' + ${count.monthPay}" /></tr>
+    <tr><p th:text="'График платежей: '" /></tr>
+    <tr>
+        <th>номер платежа</th>
+        <th>сумма платежа</th>
+        <th>проценты</th>
+        <th>тело кредита</th>
+        <th>остаток</th>
+    </tr>
+    <tr th:each="newArr : ${count.newArr}">
+        <td th:text="${newArr[0]}"></td>
+        <td th:text="${newArr[1]}"></td>
+        <td th:text="${newArr[2]}"></td>
+        <td th:text="${newArr[3]}"></td>
+        <td th:text="${newArr[4]}"></td>
+    </tr>
+</table>
+</body>
+</html>
